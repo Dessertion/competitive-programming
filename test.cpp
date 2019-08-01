@@ -1,50 +1,32 @@
 #include <bits/stdc++.h>
-#define pb_ push_back
-#pragma GCC optimize ("Ofast")
-
 using namespace std;
+#define pb_ push_back
+#define eb_ emplace_back
+#define mp_ make_pair
+//#define endl '\n'
+typedef long long ll;
+typedef unsigned long long ull;
+typedef pair<long,long> pll;
+typedef pair<int,int> pii;
 
-const int MN = 5e3+5,MM = 1e5+5;
 
-int N,M,fence[MM],ans,dp[MN];
+struct nd{
+  int val;  
+};
 
-int flowers[MN];
-
-int doDP(int idx){
-    if(dp[idx])return dp[idx];
-    if(idx==N)return 0;
-    int ret = 0x3f3f3f3f;
-    for(int i = 1; i<= M; i++){
-        auto itr = lower_bound(flowers,flowers+N,flowers[idx]+i)-flowers;
-        ret = min(ret,doDP(itr)+fence[i]);
-    }
-    return dp[idx] = ret;
+void ree(nd *a){
+    a = 0;
 }
 
 int main(){
-    cin.tie(0),cout.tie(0),cout.sync_with_stdio(0);
-    cin>>N>>M;
-    for(int i = 0 ; i< N; i ++){
-        int t;
-        cin>>t;
-        flowers[i]=t;
-    }
-    sort(flowers,flowers+N);
-    
-    for(int i = 1; i <=M; i++){
-        cin>>fence[i];
-    }
-    
-    for(int i = N-1; i>=0; i--){
-        dp[i] = 0x3f3f3f3f;
-        for(int j = 1; j<=M; j++){
-            auto itr = lower_bound(flowers,flowers+N,flowers[i]+j)-flowers;
-            dp[i]=min(dp[i],dp[itr]+fence[j]);
-        }
-    }
-    cout<<dp[0];
-    
-    //cout<<doDP(0);
-    
-    return 0;
+    cin.tie(0),cout.tie(0),ios::sync_with_stdio(0);
+    nd *b = new nd{55};
+    cout<<b<<endl;
+    ree(b);
+    cout<<b<<endl;
+    nd a{55};
+    nd *c = &a;
+    cout<<&c<<endl;
+    ree(c);
+    cout<<&c<<endl;
 }
